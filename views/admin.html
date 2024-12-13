@@ -1,0 +1,89 @@
+<!--//Проверку-->
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+-->
+    <link rel="stylesheet" href="/webroot/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webroot/css/style.css">
+    <link rel="stylesheet" href="/webroot/css/bootstrap.css">
+
+    <script src="/webroot/js/bootstrap.min.js"></script>
+    <script src="/webroot/js/admin.js"></script>
+    <script src="/webroot/ckeditor/ckeditor.js" ></script>
+    <script src="/webroot/js/script.js" ></script>
+
+
+    <title><?=config::get('site_name')?></title>
+</head>
+<body>
+<div class="container">
+
+    <!-- The justified navigation menu is meant for single line per list item.
+         Multiple lines will require custom code not provided by Bootstrap. -->
+    <div class="conteiner">
+        <div class="left head-responsive">
+            <h3 class="text-muted"><span style=" color:#ec1f34"><?=__('lng.admin','Admin Setion')?></span></h3>
+        </div>
+
+        <div class="blok">
+            <hr>
+        </div>
+    </div>
+    <div class="masthead">
+
+        <nav>
+            <?php
+           if(Session::get('login') && (Session::get('role') == 'admin' || Session::get('role') == 'editor')){ ?>
+            <ul class="nav nav-justified">
+                <li <?php if(App::getRouter()->getController() == 'newses'){ ?> class= "active" <?php } ?>><a <?php if(App::getRouter()->getController() == 'newses'){ ?> class= "active" <?php } ?> href="/admin/newses/">Новини та оголошення</a></li>
+                <li><a href="/admin/">Страницы сайта</a></li>
+                <li><a href="/admin/contacts">Сообщения</a></li>
+                <li><a href="/admin/forum">Форум</a></li>
+                <li><a href="/admin/users">Пользователи</a></li>
+                <li><a href="/admin/mycontacts">Контакты</a></li>
+                <!-- <li><a href="/admin/">Діяльність ОСББ</a></li>
+                <li><a href="#">Фінансова інформація</a></li>
+                <li><a href="#">Заяви на обслуговування</a></li>
+                <li><a href="#">Наш будинок</a></li>
+                <li <?php if(App::getRouter()->getController() == 'contacts'){ ?> class= "active" <?php } ?>><a <?php if(App::getRouter()->getController() == 'contacts'){ ?> class= "active" <?php } ?> href="/admin/contacts/">Контакти</a></li>
+                <li><a href="#">Законодавство</a></li>-->
+                <li><a href="/admin/users/logout">logout</a></li>
+            </ul>
+            <?php } ?>
+        </nav>
+    </div>
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <div class="conteiner">
+            <?php if (Session::hasFlash()){ ?>
+            <div class="alert alert-info" role="alert">
+                <?php Session::flash();?>
+            </div>
+            <?php } ?>
+        </div>
+        <div class="conteiner">
+            <p class="text-danger"><?=$data['content']?></p>
+        </div>
+
+
+    </div>
+
+
+    <!-- Example row of columns -->
+
+
+    <!-- Site footer -->
+    <footer class="footer">
+        <p>ОСББ "Будинок мрій", м. Київ, проспект Героїв Сталінграда, 55 &copy; 2015</p>
+    </footer>
+
+</div>
+
+
+</body>
+</html>

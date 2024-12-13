@@ -1,0 +1,28 @@
+<h3>Темы форума</h3>
+<br>
+<div>
+
+    <a href="/admin/forum/add/"><button class="btn btn-sm btn-success">Добавить тему форума</button></a>
+
+</div>
+<br>
+<table class="table table-striped" style="ьwidth:400px">
+    <?php foreach($data['forum'] as $thems_data){?>
+    <tr>
+        <td> <b><?=$thems_data['name'] ?></b></td>
+        <td class="right">
+            <a href="/admin/forum/edit/<?=$thems_data['id'] ?>"><button class="btn btn-sm btn-primsry">Редактировать тему</button></a>
+            <a href="/admin/forum/editc/<?=$thems_data['id'] ?>"><button class="btn btn-sm btn-primsry">Удалить комментарий темы</button></a>
+
+            <?php if(Session::get('role') == 'admin'){ ?>
+                <a href="/admin/forum/delete/<?=$thems_data['id'] ?>"
+                   onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button></a>
+            <?php } ?>
+
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+
+
+

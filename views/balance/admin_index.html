@@ -1,0 +1,22 @@
+<h3>Баланс</h3>
+<br>
+<div>
+    <a href="/admin/balance/add/"><button class="btn btn-sm btn-success">Добавить Баланс</button></a>
+
+</div>
+<br>
+<table class="table table-striped" style="ьwidth:400px">
+    <?php foreach($data['balance'] as $balance_data){?>
+    <tr>
+        <td> <b><?=$balance_data['title_balance'] ?></b></td>
+        <td class="right">
+            <a href="/admin/balance/edit/<?=$balance_data['id'] ?>"><button class="btn btn-sm btn-primsry">Редактировать</button></a>
+            <a href="/admin/balance/delete/<?=$balance_data['id'] ?>" onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button></a>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+
+<br>
+
+

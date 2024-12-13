@@ -1,0 +1,58 @@
+<h3>Редактор страницы</h3></br>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?=$data['page']['id']?>" />
+    <div class="form-group">
+        <label for="alias">Alias</label>
+        <input type="text" id="alias" name="alias" value="<?=$data['page']['alias']?>" class="form-control" />
+    </div>
+    <div class="form-group">
+        <select name="id_category_menu" >
+            <option selected value="<?php if($data['page']['id_category_menu']){
+                  echo $data['page']['id_category_menu'];
+              }else{
+                 echo $data['page']['id'];
+              }?>" ><?=$data['page']['title']?></option>
+            <?php
+            foreach($data['menu'] as $elm_menu){?>
+                <option value ="<?=$elm_menu['id']?>" ><?=$elm_menu['title']?></option>
+            <?php } ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="title">Название</label>
+        <input type="text" id="title" name="title" value="<?=$data['page']['title']?>" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="content">Текст</label>
+        <textarea name="content" id="content"  rows="5" class="form-control"><?=$data['page']['content'] ?></textarea>
+        <script>
+            CKEDITOR.replace("content");
+        </script>
+    </div>
+    <div class="form-group">
+        <label for="hide_content">Скрытый текст</label>
+        <textarea name="hide_content" id="hide_content"  rows="5" class="form-control"><?=$data['page']['hide_content'] ?></textarea>
+        <script>
+            CKEDITOR.replace("hide_content");
+        </script>
+    </div>
+    <div class="form-group">
+        <label for="content1">Текст2</label>
+        <textarea name="content1" id="content1"  rows="5" class="form-control"><?=$data['page']['content1'] ?></textarea>
+        <script>
+            CKEDITOR.replace("content1");
+        </script>
+    </div>
+    <div class="form-group">
+        <input type="file" name="img_name" value=""id="file-field" multiple />
+    </div>
+    <div class="form-group">
+        <label for="is_published">Опубликовать?</label>
+        <input type="checkbox" name="is_published" id="is_published"
+        <?php if($data['page']['is_published']){ ?> checked <?php } ?> />
+    </div>
+    <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
+    <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />
+
+</form>

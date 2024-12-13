@@ -1,0 +1,26 @@
+<h3>Редактировать баланс</h3></br>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="<?=$data['balance']['id']?>" />
+    <div class="form-group">
+        <label for="alias">Alias</label>
+        <input type="text" id="alias" name="alias" value="balance" class="form-control" readonly/>
+    </div>
+    <div class="form-group">
+        <label for="title_balance">Название</label>
+        <input type="text" id="title_balance" name="title_balance" value="<?=$data['balance']['title_balance']?>" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="data_balance">Дата новости</label>
+        <input id="w_data" type="date" id="data_balance" name="data_balance" value="<?=$data['balance']['data_balance']?>"class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="file" name="img_balance" value=""id="file-field" multiple /></div>
+    <div class="form-group">
+        <label for="is_published">Опубликовать</label>
+        <input type="checkbox" name="is_published" id="is_published"
+        <?php if($data['balance']['is_published']){ ?> checked <?php } ?> />
+    </div>
+    <input type="submit" class="btn btn-success" value="Сохранить" />
+</form>
+

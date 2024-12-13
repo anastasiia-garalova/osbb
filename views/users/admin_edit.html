@@ -1,0 +1,42 @@
+<h3>Все пользователи сайта</h3><br>
+<?php if(Session::get('role') == 'admin'){ ?>
+<form action="" method="post">
+    <table class="table table-striped " style="width: 100%;text-align: center">
+        <tr >
+            <td style="width: 2%"><b>№</b></td>
+            <td style="width: 10%;text-align: left"><b>Логин</b></td>
+            <td style="width: 20%;text-align: left"><b>e-mail</b></td>
+            <td style="width: 7%"><b>Роль</b></td>
+            <td style="width: 7%"><b>Номер квартиры</b></td>
+            <td style="width: 25%"><b>Имя</b></td>
+            <td colspan="3"style="width: 30%;text-align: left"><b>Телефон</b></td>
+            <!--<td colspan="2" style="width: 14%; text-align: left"><b>is_active</b></td>-->
+        </tr>
+        <?php foreach($data as $item){?>
+        <tr>
+            <td><b><?=$item['id']?></b></td>
+            <td style ="text-align: left"><?=$item['login']?></td>
+            <td style ="text-align: left"><?=$item['email']?></td>
+            <td><select name="role[<?=$item['id']?>]" >
+                <option selected value="<?=$item['role']?>" ><?=$item['role']?></option>
+                <option value ="" ></option>
+                <option value ="residents" >residents</option>
+                <option value ="editor" >editor</option>
+                </select>
+            </td>
+            <td><?=$item['number_room']?></td>
+            <td><?=$item['user_name']?></td>
+            <td style ="text-align: left"><?=$item['number_tel']?></td>
+            <td><input type="checkbox" name="is_active[<?=$item['id']?>]" value="<?=$item['is_active']?>"
+                <?php if($item['is_active']){echo 'checked ';}?>/>
+                <!--<input type="text" name="is_active" size="1"value="<?=$item['is_active']?>"/>-->
+            </td>
+        </tr>
+        <?php } ?>
+    </table>
+    <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
+    <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />
+</form>
+<?php } ?>
+<!--<input type="submit" name="submit" class="btn btn-success" value="Сохранить"/>-->
+

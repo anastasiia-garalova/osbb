@@ -1,0 +1,114 @@
+body{
+    padding-top: 10px;
+}
+.starter-template{
+    padding: 40px 15px;
+}
+form{
+    min-width: 200px!important;
+
+}
+
+.alert{
+
+    max: 100% !important;
+}
+
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.blok{
+    height:2px;
+    clear:both;
+}
+.head-responsive{
+    margin-top: 65px;
+}
+h2 {color: #3e8f3e!important; text-align: center; padding-bottom: 20px; font-size:28px!important;}
+h3 {color: #e12d2f!important;}
+.orange{color: orange!important;}
+.blu{color: #296091!important;}
+.left>h3{
+    margin: 0;
+}
+.blok hr{
+
+    height: 2px;
+    background-color:#CDB79E;
+    border: none;
+    margin: 0;
+}
+
+.jumbotron{
+    background-color:#EEE9BF!important;
+}
+ul a{
+    color:#EECFA1!important;
+}
+.nav-justified>li:hover{
+    background: #EEEEE0;
+    color:#122b40;
+}
+.nav-justified>li:hover a {
+    color:#27408B!important;
+    height: 100%!important;
+}
+.nav-justified>li>a{
+    height: 100%!important;
+}
+
+.masthead{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.lead>img{
+    width: 200px;
+    margin: 10px 10px 10px 0;
+    float:left;
+}
+
+.size12{
+    font-size: 12px;
+    margin-top: 30px;
+}
+.size18{
+    font-size: 18px !important;
+}
+.red_log,.red_em, .red_pas, .red_num{
+    box-shadow: 0 0 5px #d45252!important;
+    border-color: #b03535!important;
+}
+#w_data{
+    width: 200px!important;
+}
+#reg{
+    display: none;
+}
+.text14{
+    text-size: 14px!important;
+}
+
+ul>li>ul{
+    margin-left: 0px;
+     display: none;
+     position: absolute;
+     background: white;
+
+}
+
+ul>li>ul>li{
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    border-left: 2px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+}
+ul>li:hover ul{
+    display:block;
+}
+.red{
+    color:red;
+}

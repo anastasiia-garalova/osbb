@@ -1,0 +1,54 @@
+<?php
+//if($_SERVER['REQUEST_METHOD']=='POST'){
+ //   header("Location: /abouts");
+//}
+?>
+
+<?php if(Session::get('login')){
+    echo 'Ви вже зайшли на сайт під логіном <b>'.Session::get('login').'</b>!';
+}else{?>
+    <div class="col-md-6 " id="re">
+        <div class="conteiner">
+            <?php if (Session::hasFlash()){ ?>
+            <div class="alert alert-info" role="alert">
+                <?php Session::flash();?>
+            </div>
+        <?php } ?>
+        </div>
+        <h3 class="orange">Зареєструватися на сайті</h3>
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="user_name">Ваше ПІБ<span class="red">*</span></label>
+                <input value="<?= $data['user']['user_name']?>"   type="text" id="user_name" name="user_name"   class="form-control"/>
+
+            </div>
+            <div class="form-group">
+                <label for="login">Ваш Login, латинськими літерами<span class="red">*</span></label>
+                <input value="<?= $data['user']['login']?>"   type="text" id="login" name="login"   class="form-control"/>
+
+            </div>
+            <div class="form-group">
+                <label for="email">Ваш e-mail<span class="red">*</span></label>
+                <input value="<?= $data['user']['email']?>"   type="email" id="email" name="email"   class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="number_tel">Вашо номер телефону<span class="red">*</span></label>
+                <input type="text" id="number_tel" name="number_tel" value="<?= $data['user']['number_tel']?>"class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="number_room">Номер Вашої квартири<span class="red">*</span></label>
+                <input type="text" id="number_room" name="number_room" value="<?= $data['user']['number_room']?>"class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль<span class="red">*</span></label>
+                <input type="password" id="password" name="password" value="<?= $data['user']['password']?>"class="form-control "/>
+            </div>
+            <div class="form-group">
+                <label for="r_password">Пароль<span class="red">*</span></label>
+                <input type="password" id="r_password" name="r_password" value="<?= $data['user']['r_password']?>"class="form-control <"/>
+            </div>
+            <input type="submit" class="btn btn-success btn-warning" name="reg" value="Зареєструватися"/>
+
+        </form>
+    </div>
+<?php } ?>

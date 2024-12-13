@@ -1,0 +1,9 @@
+<?php
+foreach($data['newses'] as $news_data){
+    if($news_data['is_published']){?>
+<div style="margin-top: 20px;">
+    <a href="/newses/view/<?=$news_data['alias']?>"><?=$news_data['title_news']?></a>
+</div>
+
+<?php }
+} ?>

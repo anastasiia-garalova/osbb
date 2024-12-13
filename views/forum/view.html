@@ -1,0 +1,71 @@
+<h2><?=$data['them'][0]['thems']?> </h2>
+<p><a href = "../../forum">Повернутися на головну сторинку Форума</a></p>
+
+<br>
+
+<p  style="color:#363636">
+    <!--<span style="color:#458B00"><?=$data['them'][0]['data_thems']?><i> <?=$data['them'][0]['login']?> </i> </span><br>-->
+    <?=$data['them'][0]['content_thems']?></p>
+
+
+
+<?php if(Session::get('login')){?>
+<form action="" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="comment">Оставьте свой коментарий</label>
+        <textarea name="comment" id="comment" rows="5" class="form-control"><?=$data['them']['content_thems']?></textarea>
+        
+    </div>
+
+    <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
+    <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />
+</form>
+<br />
+<?php } else {?>
+    <li>Щоб залишити свій коментар, треба <a href="/login/">зайти на сайт</a></li>
+<?php }
+        foreach($data['them']['comments'] as $data_comments){
+        $id_comments = $data_comments['id'];
+?>
+            <p><span style="color:#1b6d85"><?=$data_comments['login']?> <?=$data_comments['comment_date']?></span> <br/>
+                <?=$data_comments['content']?><br/>
+                
+                <span id="answer_<?=$data_comments['id']?>" style= "color:#1d75b3"onclick="showForm('answer_<?=$id_comments?>')">Ответить</span>
+            </p>
+            <form id ="answer_<?=$id_comments?>1" action="" method="POST" enctype="multipart/form-data" style="display: none">
+                    <input type="hidden" name="id_comments" value="<?=$id_comments?>"/>
+
+                <div class="form-group">
+                    <label for="content_answer">Оставьте свой коментарий</label>
+                    <textarea name="content_answer" id="content_answer" rows="5" class="form-control"><?=$data['them']['content_answer']?></textarea>
+                    
+                </div>
+                <input type="submit" class="btn btn-success" name="answer" value="Сохранить" />
+                <input type="button" onclick="hideForm('answer_<?=$id_comments?>')" class="btn btn-success"  value="Отмена" />
+            </form>
+            <?php
+            if($data['them']['answer']){
+                 foreach($data['them']['answer'] as $data_answer){
+                    if($data_answer['id_comment'] == $data_comments['id']){?>
+                        <p style="margin-left:40px;"><span style="color:#1b6d85"><?=$data_answer['login']?>
+                            <?=$data_answer['data']?></span> <br/><?=$data_answer['content_answer']?><br/>
+</p>
+                    <?php
+                    }
+                }
+            }
+           
+        }
+    ?>
+
+                    <script type="text/javascript">
+
+                        //Функция показа
+
+                        function hideForm(answer){
+                            $('#'+answer+'1').hide();
+                        }
+                        function showForm(answer){
+                            $('#'+answer+'1').show();
+                        }
+                    </script>

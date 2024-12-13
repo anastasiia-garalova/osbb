@@ -1,0 +1,25 @@
+<h3>Новини та оголошення</h3>
+<br>
+<div>
+
+    <a href="/admin/newses/add/"><button class="btn btn-sm btn-success">Добавить новость</button></a>
+
+</div>
+<br>
+<table class="table table-striped" style="ьwidth:400px">
+    <?php foreach($data['newses'] as $news_data){?>
+    <tr>
+        <td> <b><?=$news_data['title_news'] ?></b></td>
+        <td class="right">
+            <a href="/admin/newses/edit/<?=$news_data['id'] ?>"><button class="btn btn-sm btn-primsry">Редактировать</button></a>
+            <?php if(Session::get('role') == 'admin'){ ?>
+                <a href="/admin/newses/delete/<?=$news_data['id'] ?>"
+                   onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button></a>
+            <?php } ?>
+        </td>
+    </tr>
+    <?php } ?>
+</table>
+
+
+

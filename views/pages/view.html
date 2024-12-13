@@ -1,0 +1,28 @@
+<h3 class="blu"><?=$data['page']['title']?></h3>
+
+<?php if(Session::get('login')){?>
+
+    <p><?=$data['page']['content']?></p>
+<?php
+
+
+if(Session::get('role') == 'residents' || Session::get('role') == 'admin'
+|| Session::get('role') == 'editor' ){ ?>
+    <p><?=$data['page']['hide_content']?></p>
+<?php }?>
+    <p><?=$data['page']['content1']?></p>
+    <?php if($data['page']['img_name']){?>
+        <p>
+            <img src="/webroot/uploads/<?=$data['page']['img_name']?>" width="600px"/>
+        </p>
+    <?php }
+}else{
+    echo 'Ця інформація тільки для зареєстрованих користувачів';
+    ?>
+    <a href="/login/">Увійти на сайт</a>
+
+<?php } ?>
+
+
+
+

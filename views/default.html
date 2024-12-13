@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webroot/css/style.css">
+    <link rel="stylesheet" href="/webroot/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webroot/css/bootstrap.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+
+    <script src="/webroot/js/bootstrap.min.js"></script>
+    <title><?=config::get('site_name')?></title>
+</head>
+<body>
+<div class="container">
+
+    <!-- The justified navigation menu is meant for single line per list item.
+         Multiple lines will require custom code not provided by Bootstrap. -->
+    <div style="background: url('/webroot/img/61.jpg'); ">
+        <div style="background: rgba( 255, 255, 255, 0.7)">
+        <a href="/abouts/" <?php if(App::getRouter()->getController() == 'abouts'){ ?> class= "active" <?php } ?> ><img class="left" src="/webroot/img/logo.jpg"/></a>
+        <div class="left head-responsive">Об'єднання співвласників <br>багатоквартирного будинку
+            <h3 class="text-muted"><span style=" color:#ec1f34"><?=__('lng.test','default value')?></span></h3>
+        </div>
+
+        <div class="right size12">
+            м. Київ, проспект Героїв Сталінграда, 55<br>
+            Поточный рахунок: № 26000300480840<br>
+            ТВБВ № 10026/0143 філії - <br>Головне Управління по м.Києву<br>
+            та Київській області АТ "Ощадбанк", <br>МФО: 322669
+        </div>
+            <div class="blok">
+                <hr>
+            </div>
+        </div>
+        <div class="masthead" style ="margin-top: 465px;">
+
+            <nav>
+                <ul class="nav nav-justified">
+                    <li ><a <?php if(App::getRouter()->getController() == 'newses'){ ?> class= "active" <?php } ?> href="/newses/">Новини та оголошення</a></li>
+
+                    <?php
+                    foreach($data['menu'] as $elemMenu){
+                        $i = 0;
+                        foreach($elemMenu as $key => $submenu){
+                    if($i == 0){ ?>
+                    <li >
+                        <a href="/pages/view/<?=$key?>" aria-haspopup="true" aria-expanded="false" >
+                            <?=$submenu?>
+                            <?php
+                                        if($key != 'application' AND $key != 'legislation'){?>
+                            <span class="caret"> </span>
+                            <?php } ?>
+                        </a>
+
+                        <?php
+                            }elseif($i == 1){ ?>
+                        <ul class="nav">
+                            <li><a href="/pages/view/<?=$key?>"><?=$submenu?></a></li>
+
+                            <?php
+                           }elseif($i > 1){?>
+                            <li><a href="/pages/view/<?=$key?>"><?=$submenu?></a></li>
+                            <?php
+
+                           }
+                           $i++;
+                        }
+                        if($i > 1){
+                            echo "</ul>";
+                        }?>
+                    </li>
+                    <?php
+                    }
+                ?>
+                    <li><a <?php if(App::getRouter()->getController() == 'forum'){ ?> class= "active" <?php } ?> href="/forum/">
+                        Форум</a></li>
+                    <li><a <?php if(App::getRouter()->getController() == 'contacts'){ ?> class= "active" <?php } ?> href="/contacts/">
+                        Контакти</a></li>
+                    <!--
+                                    <li><a href="/pages/view/financ_info/">Фінансова інформація <span class="caret"></span></a>
+                                        <ul class="nav">
+                                            <li><a href="/pages/view/balance/">Баланс рахунку Об’єднання</a></li>
+                                            <li><a href="/pages/view/recfunds/">Надходження коштів</a></li>
+                                            <li><a href="/pages/view/costs/">Видатки</a></li>
+                                            <li><a href="/pages/view/debtors/">Боржники</a></li>
+                                            <li><a href="/pages/view/estimates/">Кошторис</a></li>
+                                            <li><a href="/pages/view/calculations/">Розрахунки по-квартирно</a></li>
+                                            <li><a href="/pages/view/calculations_parkin/">Розрахунки за паркінг</a></li>
+                                            <li><a href="/pages/view/rental/">Оренда приміщень</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/pages/view/application/">Заяви на обслуговування</a></li>
+                                    <li><a href="/pages/view/our_house">Наш <br>будинок<span class="caret"></span></a>
+                                        <ul class="nav">
+                                            <li><a href="/pages/view/key_features/">Основні характеристики</a></li>
+                                            <li><a href="/pages/view/project/">Проектна документація</a></li>
+                                            <li><a href="/pages/view/apartments/">Квартири в будинку</a></li>
+                                            <li><a href="/pages/view/parking/">Машиномісця у паркінгу</a></li>
+                                            <li><a href="/pages/view/technical/">Технічні приміщення</a></li>
+                                            <li><a href="/pages/view/water/">ІТП та система водопостачання</a></li>
+                                            <li><a href="/pages/view/elevators/">Ліфти</a></li>
+                                            <li><a href="/pages/view/fire/">Системи пожежної сигналізації, пожежогасіння та димовидалення</a></li>
+                                            <li><a href="/pages/view/territory/">Прибудинкова територія</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a <?php if(App::getRouter()->getController() == 'contacts'){ ?> class= "active" <?php } ?> href="/contacts/">
+                                        Контакти <span class="caret"></span></a>
+                                        <ul class="nav">
+                                            <li><a href="/pages/view/board/">Правління ОСББ</a></li>
+                                            <li><a href="/pages/view/commission/">Ревізійна комісія ОСББ</a></li>
+                                            <li><a href="/pages/view/service/">Обслуговуючі організації</a></li>
+                                            <li><a href="/pages/view/workers/">Працівники в будинку</a></li>
+                                            <li><a href="/pages/view/accident">На випадок АВАРІЇ</a></li>
+
+                                        </ul>
+                                    </li>
+
+                                    <li><a href="/pages/view/legislation">Законодавство</a></li>
+                                    -->
+                    <?php if(Session::get('login')){?>
+                    <li><?=Session::get('login');?><br>
+
+                        <a href="/login/logout">Вихід</a></li>
+                    <?php } else {?>
+                    <li><a href="/login/">Вхід на сайт</a></li>
+                    <?php }?>
+
+                </ul>
+            </nav>
+
+        </div>
+
+    </div>
+    <div class="blok">
+        <hr>
+    </div>
+
+
+
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <div class="conteiner">
+            <?php if (Session::hasFlash()){ ?>
+            <div class="alert alert-info" role="alert">
+                <?php Session::flash();?>
+            </div>
+            <?php } ?>
+        </div>
+        <div class="conteiner-fluid">
+            <div class="row">
+                <div class=".col-md-12">
+                    <p class="text-danger"><?=$data['content']?></p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- Example row of columns -->
+
+
+    <!-- Site footer -->
+    <footer class="footer">
+        <p>ОСББ "Будинок мрій", м. Київ, проспект Героїв Сталінграда, 55 &copy; 2015</p>
+    </footer>
+
+</div>
+
+
+</body>
+</html>

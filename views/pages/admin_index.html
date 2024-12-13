@@ -1,0 +1,25 @@
+<h3>Меню</h3>
+
+<div>
+    <?php if(Session::get('role') == 'admin'){ ?>
+        <a href="/admin/pages/add/"><button class="btn btn-sm btn-success">Новая страничка</button></a>
+    <?php } ?>
+</div>
+<br>
+
+<table class="table table-striped" style="min-width:400px">
+    <?php foreach($data['pages'] as $page_data){?>
+<tr>
+    <td> <b><?=$page_data['title'] ?></b></td>
+    <td class="right">
+        <a href="/admin/pages/edit/<?=$page_data['id'] ?>"><button class="btn btn-sm btn-primsry">Редактировать</button></a>
+        <?php if(Session::get('role') == 'admin'){ ?>
+            <a href="/admin/pages/delete/<?=$page_data['id'] ?>" onclick="return confirmDelete();">
+                <button class="btn btn-sm btn-warning">Удалить</button></a>
+         <?php } ?>
+    </td>
+</tr>
+    <?php } ?>
+</table>
+
+

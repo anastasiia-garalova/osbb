@@ -1,0 +1,29 @@
+<h3>Новая страница сайта</h3></br>
+
+<form action="" method="POST">
+    <div class="form-group">
+        <label for="alias">Alias</label>
+        <input type="text" id="alias" name="alias" value="news" class="form-control" readonly/>
+    </div>
+    <div class="form-group">
+    <label for="title_news">Название новости</label>
+    <input type="text" id="title_news" name="title_news" value="" class="form-control" />
+</div>
+    <div class="form-group">
+        <label for="data_news">Название новости</label>
+        <input id="w_data" type="date" id="data_news" name="data_news" value="" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="content_news">Текст</label>
+        <textarea name="content_news" id="content_news" rows="5" class="form-control"></textarea>
+        <script>
+            CKEDITOR.replace("content_news");
+        </script>
+    </div>
+    <div class="form-group">
+        <label for="is_published">Опубликовать</label>
+        <input type="checkbox" name="is_published" id="is_published" checked />
+    </div>
+    <input type="submit" class="btn btn-success" name="save" value="Сохранить" />
+    <input type="submit" class="btn btn-success" name="cancel" value="Отмена" />
+</form>

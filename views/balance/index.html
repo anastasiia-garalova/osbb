@@ -1,0 +1,11 @@
+<h2>Баланс рахунку<? //=$data['balance']['title_balance'] ?> </h2>
+
+<?php foreach($data['balance'] as $balance_data){ ?>
+<div style="margin-top: 20px;">
+    <p class="text-danger">
+        <?=$balance_data['data_balance'].' '.$balance_data['title_balance']?><br>
+        <img src="../webroot/uploads/<?=$balance_data['img_balance']?>" width="200px">
+    </p>
+</div>
+
+<?php }?>

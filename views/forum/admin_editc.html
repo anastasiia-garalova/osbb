@@ -1,0 +1,33 @@
+<?php
+    foreach($data['comments'] as $comment){
+        $them = $comment[them];
+        break;
+    }
+?>
+<h3>Коментарии темы "<?=$them?>"</h3>
+<br>
+
+
+<br>
+<table class="table table-striped" style="ьwidth:400px">
+    <?php foreach($data['comments'] as $comment){
+        $them = $comment['them'];
+    ?>
+        <tr>
+            <td><span style="color:darkorange"><b><?=$comment['comment_date'] ?></b><br/>
+            </span><?=$comment['content'] ?></td>
+            <td class="right">
+                <?php if(Session::get('role') == 'admin'){ ?>
+                <a href="/admin/forum/deletec/<?=$comment['id'] ?>"
+                   onclick="return confirmDelete();"><button class="btn btn-sm btn-warning">Удалить</button></a>
+                <?php } ?>
+
+        </td>
+    </tr>
+    <?php } ?>
+
+</table>
+<p><a href = "../../forum">Повернутися на сторинку Форума</a></p>
+
+
+

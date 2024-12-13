@@ -1,0 +1,21 @@
+<h3>Сообщения</h3><br>
+<?php if(Session::get('role') == 'admin'){ ?>
+<table class="table table-striped" style="width: 100%">
+    <tr>
+        <td style="width: 5%"><b>id</b></td>
+        <td style="width: 10%"><b>Имя</b></td>
+        <td style="width: 25%"><b>e-mail</b></td>
+        <td colspan="2"style="width: 50%"><b>Сообщение</b></td>
+    </tr>
+    <?php foreach($data as $item){ ?>
+    <tr>
+        <td><b><?=$item['id']?></b></td>
+        <td><?=$item['name']?></td>
+        <td><?=$item['email']?></td>
+        <td><?=$item['message']?></td>
+        <td><a href="/admin/contacts/delete/<?=$item['id'] ?>" onclick="return confirmDelete();">
+            <button class="btn btn-sm btn-warning">Удалить</button></a></td>
+    </tr>
+    <?php } ?>
+</table>
+<?php } ?>

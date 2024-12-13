@@ -1,0 +1,10 @@
+
+<?php
+foreach($data['forum'] as $thems_data){?>
+<div style="margin-top: 20px;">
+
+    <a href="/forum/view/<?=$thems_data['id']?>"><?=$thems_data['data'].
+    " ".$thems_data['name']." ".$thems_data['login']?></a>
+</div>
+
+<?php } ?>
